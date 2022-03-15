@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import SpringDemo.HRMSBackend.business.abstracts.EmployerService;
+import SpringDemo.HRMSBackend.core.utilities.results.DataResult;
+import SpringDemo.HRMSBackend.core.utilities.results.Result;
+import SpringDemo.HRMSBackend.core.utilities.results.SuccessResult;
 import SpringDemo.HRMSBackend.entities.concretes.Employer;
 
 @RestController
@@ -25,16 +28,17 @@ public class EmployersController {
 	}
 	
 	@GetMapping("/getall")
-	public List<Employer> getAll() {
+	public DataResult<List<Employer>> getAll() {
 		
 		return this.employerService.getAll();
 	}
 	
 	
 	@PostMapping("/add/{employer}")
-	public void add(@RequestBody Employer employer) {
+	public Result add(@RequestBody Employer employer) {
 		
-		this.employerService.add(employer);
+		return this.employerService.add(employer);
+		
 	}
 
 }

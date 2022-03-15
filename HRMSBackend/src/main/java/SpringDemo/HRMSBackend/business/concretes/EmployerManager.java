@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import SpringDemo.HRMSBackend.business.abstracts.EmployerService;
+import SpringDemo.HRMSBackend.core.utilities.results.DataResult;
+import SpringDemo.HRMSBackend.core.utilities.results.Result;
+import SpringDemo.HRMSBackend.core.utilities.results.SuccessDataResult;
+import SpringDemo.HRMSBackend.core.utilities.results.SuccessResult;
 import SpringDemo.HRMSBackend.dataAccess.abstracts.EmployerDao;
 import SpringDemo.HRMSBackend.entities.concretes.Employer;
 
@@ -22,16 +26,19 @@ public class EmployerManager implements EmployerService{
 	}
 
 	@Override
-	public List<Employer> getAll() {
+	public DataResult<List<Employer>> getAll() {
 		
-		return this.employerDao.findAll();
+		 this.employerDao.findAll();
+		 return new SuccessDataResult<List<Employer>>
+		 (this.employerDao.findAll(), "Employers listed");
 		
 	}
 
 	@Override
-	public void add(Employer employer) {
-		//kontrol kondlari
+	public Result add(Employer employer) {
+		//kontrol kodlari
 		this.employerDao.save(employer);
+		return new SuccessResult("Employer added");
 		
 	}
 
