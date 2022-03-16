@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,33 +12,27 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Table(name="job_titles")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
-public class Job {
-
+@Entity
+@Table(name="cities")
+@AllArgsConstructor
+@NoArgsConstructor
+public class City {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="job_id")
+	@Column(name="city_id")
 	private int id;
 	
-	@Column(name="title", unique = true)
-	private String titles;
+	@Column(name="city")
+	private String city;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "job", orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy ="city", orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<JobAdvertisement> jobAdvertisements;
-
 }

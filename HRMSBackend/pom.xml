@@ -8,10 +8,10 @@
 		<version>2.5.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>kodlamaio</groupId>
-	<artifactId>hrms</artifactId>
+	<groupId>SpringDemo</groupId>
+	<artifactId>HRMSBackend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hrms</name>
+	<name>HRMSBackend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -71,6 +71,16 @@
 	        <artifactId>cloudinary-http44</artifactId>
 	        <version>1.29.0</version>
 	    </dependency>
+	    
+	    <dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>2.4.5</version>
+</dependency>
+
+
+
+	    
 	</dependencies>
 
 	<build>

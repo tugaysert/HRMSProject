@@ -1,8 +1,9 @@
 package SpringDemo.HRMSBackend.entities.concretes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+
+import org.hibernate.annotations.Cascade;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -38,27 +41,43 @@ public class JobAdvertisement {
 	@NotNull
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "employer_id")
+	@JoinColumn(name="employer_id")
 	private Employer employer;
 	
 	@NotNull
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "job_titles_id")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="job_id")
 	private Job job;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="city_id")
+	private City city;
+	
 	
 	@Column(name = "job_advertisement_description")
 	private String description;
 	
-	@Column(name = "open_positions")
-	private int openPositions;
+	@Column(name = "number_of_open_positions")
+	private int numberOfOpenPositions;
 	
 	@Column(name = "is_active")
 	private boolean isActive;
 	
-	@Null(message = "must be null")
-	@Column(name = "release_date_time")
-	private LocalDateTime releaseDateTime = LocalDateTime.now();
+
+	@Column(name="created_date")
+	private LocalDate createdDate ;
+	
+	@Column(name="application_deadline")
+	private LocalDate applicationDeadline;
+	
+	
+	@Column(name = "min_salary")
+	private double minSalary;
+	@Column(name = "max_salary")
+	private double maxSalary;
+	
+	
 	
 
 }

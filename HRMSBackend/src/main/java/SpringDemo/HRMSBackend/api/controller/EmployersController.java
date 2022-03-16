@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import SpringDemo.HRMSBackend.business.abstracts.EmployerService;
 import SpringDemo.HRMSBackend.core.utilities.results.DataResult;
 import SpringDemo.HRMSBackend.core.utilities.results.Result;
-import SpringDemo.HRMSBackend.core.utilities.results.SuccessResult;
 import SpringDemo.HRMSBackend.entities.concretes.Employer;
 
 @RestController
@@ -21,6 +20,7 @@ public class EmployersController {
 	
 	private EmployerService employerService;
 	
+
 	@Autowired
 	public EmployersController(EmployerService employerService) {
 		super();
@@ -40,5 +40,7 @@ public class EmployersController {
 		return this.employerService.add(employer);
 		
 	}
+	
+	
 
 }

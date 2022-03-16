@@ -1,5 +1,6 @@
 package SpringDemo.HRMSBackend;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -26,4 +27,9 @@ public class HrmsBackendApplication {
           .paths(PathSelectors.any())                          
           .build();                                           
     }
+	
+	@Bean
+	public ModelMapper modelMapper() {
+	  return new ModelMapper();
+	}
 }
