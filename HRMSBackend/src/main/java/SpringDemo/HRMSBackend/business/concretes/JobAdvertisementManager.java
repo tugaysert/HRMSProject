@@ -1,15 +1,15 @@
 package SpringDemo.HRMSBackend.business.concretes;
 
 import java.time.LocalDate;
-
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import SpringDemo.HRMSBackend.business.abstracts.JobAdvertisementService;
 import SpringDemo.HRMSBackend.core.utilities.dtoConverter.abstracts.DtoConverterService;
-
+import SpringDemo.HRMSBackend.core.utilities.results.DataResult;
 import SpringDemo.HRMSBackend.core.utilities.results.Result;
-
+import SpringDemo.HRMSBackend.core.utilities.results.SuccessDataResult;
 import SpringDemo.HRMSBackend.core.utilities.results.SuccessResult;
 import SpringDemo.HRMSBackend.dataAccess.abstracts.JobAdvertisementDao;
 import SpringDemo.HRMSBackend.entities.concretes.JobAdvertisement;
@@ -83,6 +83,18 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		return null;
 	}
 	*/
+
+
+
+
+	@Override
+	public DataResult<List<JobAdvertisement>> findAll() {
+		
+		this.jobAdvertisementDao.findAll();
+		
+		return new SuccessDataResult<List<JobAdvertisement>>
+		(this.jobAdvertisementDao.findAll(),"Job advertisements are successfully listed.");
+	}
 
 
 

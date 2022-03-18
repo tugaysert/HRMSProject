@@ -33,6 +33,6 @@ public class City {
 	private String city;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy ="city", orphanRemoval = true, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy ="city", orphanRemoval = true)
 	private List<JobAdvertisement> jobAdvertisements;
 }

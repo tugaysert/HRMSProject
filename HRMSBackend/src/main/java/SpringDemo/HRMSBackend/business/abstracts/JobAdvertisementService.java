@@ -13,12 +13,14 @@ import SpringDemo.HRMSBackend.entities.dtos.JobAdvertisementAddDto;
 public interface JobAdvertisementService {
 	
 	Result add(JobAdvertisementAddDto jobAdvertisementAddDto);
+	DataResult<List<JobAdvertisement>> findAll();
+	//List<JobAdvertisement> findAllByIsActive(boolean isActive);
 
 	/*Result delete(int id);
 	Result isActive(int id,int employerId,boolean isActive);
 	
 	JobAdvertisement findById(int id);
-	DataResult<List<JobAdvertisement>> findAll();
+	
 	DataResult<List<JobAdvertisement>> findAllByIsActive(boolean isActive);
 	/*
 	DataResult<List<JobAdvertisement>> getAllByIsActive();

@@ -18,6 +18,7 @@ import javax.validation.constraints.Null;
 
 import org.hibernate.annotations.Cascade;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,7 +31,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name="job_advertisements")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "employer", "job"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "job"})
 public class JobAdvertisement {
 	
 	@Id
@@ -39,7 +40,7 @@ public class JobAdvertisement {
 	private int id;
 	
 	@NotNull
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="employer_id")
 	private Employer employer;
