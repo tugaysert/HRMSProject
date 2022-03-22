@@ -3,6 +3,7 @@ package SpringDemo.HRMSBackend.business.concretes;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import SpringDemo.HRMSBackend.business.abstracts.JobAdvertisementService;
@@ -18,8 +19,10 @@ import SpringDemo.HRMSBackend.entities.dtos.JobAdvertisementAddDto;
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService{
 	
+	@Autowired
 	JobAdvertisementDao jobAdvertisementDao;
 	DtoConverterService dtoConverterService;
+	
 	
 	public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao,
 			DtoConverterService dtoConverterService) {
@@ -31,7 +34,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	
 	
 
-	//@Override
+	@Override
 	public Result add(JobAdvertisementAddDto jobAdvertisementAddDto) {
 		
 		jobAdvertisementAddDto.setCreatedDate(LocalDate.now());

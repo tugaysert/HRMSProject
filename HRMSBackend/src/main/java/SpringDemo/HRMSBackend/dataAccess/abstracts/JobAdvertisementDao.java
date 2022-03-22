@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import SpringDemo.HRMSBackend.entities.concretes.JobAdvertisement;
 
-//@Repository
+@Repository
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer>{
 
 	JobAdvertisement findById(int id);

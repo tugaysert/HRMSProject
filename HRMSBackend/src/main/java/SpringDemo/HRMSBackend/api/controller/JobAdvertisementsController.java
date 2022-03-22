@@ -20,9 +20,10 @@ import SpringDemo.HRMSBackend.entities.dtos.JobAdvertisementAddDto;
 @RequestMapping("/api/jobadvertisements")
 public class JobAdvertisementsController {
 	
+	@Autowired
 	private JobAdvertisementService jobAdvertisementService;
 	
-	@Autowired
+	
 	public JobAdvertisementsController
 	(JobAdvertisementService jobAdvertisementService) {
 		

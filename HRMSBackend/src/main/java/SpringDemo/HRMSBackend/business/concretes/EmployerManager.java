@@ -23,7 +23,7 @@ public class EmployerManager implements EmployerService{
 	
 	
 	private Result isEmailExist(String email) {
-		if (this.employerDao.getByEmail(email)!=null) {
+		if (this.employerDao.findByEmail(email)!=null) {
 			//"Email database'de mevcut"
 			return new SuccessResult();
 		}

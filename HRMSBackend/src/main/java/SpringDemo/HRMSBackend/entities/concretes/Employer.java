@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -27,7 +28,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Entity
-@PrimaryKeyJoinColumn(name="employer_id", referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name="user_id")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Table(name="employers")
 public class Employer extends User {
@@ -48,5 +49,6 @@ public class Employer extends User {
 	@JsonManagedReference
 	@OneToMany(mappedBy = "employer", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<JobAdvertisement> jobAdvertisements;
-
+	
+	
 }

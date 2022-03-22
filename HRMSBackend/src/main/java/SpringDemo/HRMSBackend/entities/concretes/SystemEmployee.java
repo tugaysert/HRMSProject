@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Entity
+@PrimaryKeyJoinColumn(name="user_id")
 @Table(name = "system_employees")
 public class SystemEmployee extends User {
 	
@@ -29,8 +31,6 @@ public class SystemEmployee extends User {
 	@Column(name="last_name")
 	private String lastName;
 	
-	@JsonManagedReference
-	@OneToMany(mappedBy = "systemEmployee")
-	private List<EmployerConfirmBySystemEmployee> employerConfirmBySystemEmployees;
+
 
 }

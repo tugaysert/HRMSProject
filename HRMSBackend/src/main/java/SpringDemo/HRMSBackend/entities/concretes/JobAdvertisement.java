@@ -41,7 +41,7 @@ public class JobAdvertisement {
 	
 	@NotNull
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="employer_id")
 	private Employer employer;
 	
