@@ -16,18 +16,21 @@ import java.util.Date;
 
 public class Verification {
 	
+	  @Id
+	  @Column(name = "user_id")
+	  private int userId;
 	
-	 @Id
-	    @Column(name = "user_id")
-	    private int userId;
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
-	    @Column(name = "confirm")
-	    private boolean confirm;
+	 @Column(name = "confirm")
+	 private boolean confirm;
 
-	    @Column(name = "create_date")
-	    private Date createDate;
+	 @Column(name = "create_date")
+	 private Date createDate;
 
-	    @Column(name = "active")
-	    private boolean active;
+	 @Column(name = "active")
+	 private boolean active;
 
 }

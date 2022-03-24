@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 
 import SpringDemo.HRMSBackend.business.abstracts.EmployerService;
+import SpringDemo.HRMSBackend.business.abstracts.EmployerVerificationService;
+import SpringDemo.HRMSBackend.business.abstracts.UserService;
+import SpringDemo.HRMSBackend.business.abstracts.VerificationService;
 import SpringDemo.HRMSBackend.core.utilities.results.DataResult;
 import SpringDemo.HRMSBackend.core.utilities.results.ErrorResult;
 import SpringDemo.HRMSBackend.core.utilities.results.Result;
@@ -18,8 +21,11 @@ import SpringDemo.HRMSBackend.entities.concretes.Employer;
 @Service
 public class EmployerManager implements EmployerService{
 	
+	@Autowired
 	private EmployerDao employerDao;
-	
+	private UserService userService;
+    private VerificationService verificationService;
+    private EmployerVerificationService employerVerificationService;
 	
 	
 	private Result isEmailExist(String email) {
@@ -55,13 +61,16 @@ public class EmployerManager implements EmployerService{
 		if (this.isEmailExist(employer.getEmail()).isSuccess() == true){
 				return new ErrorResult("Email already exist");
 			}
-			
-		
-		
+				
 		//kontrol kodlari
 		this.employerDao.save(employer);
 		return new SuccessResult("Employer added");
 		
 	}
+
+	 @Override
+	    public DataResult<List<Employer>> findByEmployerEmail(String email) {
+	        return new SuccessDataResult<List<Employer>>(this.employerDao.findByEmail(email), "employer listelendi (email ile)");
+	    }
 
 }

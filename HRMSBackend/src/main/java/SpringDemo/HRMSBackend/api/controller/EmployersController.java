@@ -14,6 +14,7 @@ import SpringDemo.HRMSBackend.core.utilities.results.DataResult;
 import SpringDemo.HRMSBackend.core.utilities.results.Result;
 import SpringDemo.HRMSBackend.entities.concretes.Employer;
 
+
 @RestController
 @RequestMapping("/api/employers")
 public class EmployersController {
@@ -41,6 +42,10 @@ public class EmployersController {
 		
 	}
 	
+	@GetMapping("/getByEmail")
+    public DataResult<List<Employer>> getByEmail(String email){
+        return this.employerService.findByEmployerEmail(email);
+    }
 	
 
 }

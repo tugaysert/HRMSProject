@@ -5,6 +5,7 @@ package SpringDemo.HRMSBackend.entities.concretes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.Date;
 
 @Data
 @Entity
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "user_id")
@@ -22,19 +24,19 @@ public class Candidate extends User{
 	  @Column(name = "first_name")
 	    private String firstName;
 
-	    @Column(name = "last_name")
-	    private String lastName;
+	  @Column(name = "last_name")
+	  private String lastName;
 
-	    @Column(name = "identity_number")
-	    private String identityNumber;
+	  @Column(name = "identity_number")
+	  private String identityNumber;
 
-	    @Column(name = "year_of_birth")
-	    private LocalDate yearOfBirth;
+	  @Column(name = "year_of_birth")
+	  private LocalDate yearOfBirth;
 
-	    @Column(name = "create_date")
-	    private Date createDate;
+	  @Column(name = "create_date")
+	  private Date createDate;
 
-	    @Column(name = "active")
-	    private boolean active;
+	  @Column(name = "active")
+	  private boolean active;
 
 }

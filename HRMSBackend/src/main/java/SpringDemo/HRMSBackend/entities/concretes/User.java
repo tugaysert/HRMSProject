@@ -1,5 +1,6 @@
 package SpringDemo.HRMSBackend.entities.concretes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -43,4 +45,12 @@ public class User {
 	
 	@Column(name= "password")
 	private String password;
+	
+	@Column(name = "confirm_password")
+    private String confirmPassword;
+
+	
+	//json managed kontrolu??? yap
+	@OneToOne(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
+	private Verification verification;
 }

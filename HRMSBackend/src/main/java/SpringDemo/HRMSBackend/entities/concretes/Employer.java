@@ -3,6 +3,7 @@ package SpringDemo.HRMSBackend.entities.concretes;
 
 
 import java.util.List;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -46,9 +47,18 @@ public class Employer extends User {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+	@Column(name = "create_date")
+	private Date createDate;
+
+	@Column(name = "active")
+	private boolean active;
+
 	@JsonManagedReference
 	@OneToMany(mappedBy = "employer", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<JobAdvertisement> jobAdvertisements;
 	
+	
+	@OneToOne(mappedBy = "employer", orphanRemoval = true, cascade = CascadeType.ALL)
+	private EmployerVerification employerVerification;
 	
 }

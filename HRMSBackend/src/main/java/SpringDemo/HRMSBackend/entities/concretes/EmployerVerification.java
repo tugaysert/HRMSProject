@@ -14,18 +14,23 @@ import java.util.Date;
 @Table(name = "employers_verifications")
 public class EmployerVerification {
 	
-	   @Id
-	    @Column(name = "employer_id")
-	    private int employerId;
+	 @Id
+	 @Column(name = "employer_id")
+	 private int employerId;
 
-	    @Column(name = "confirm")
-	    private boolean confirm;
+	//json back kontrlou yap
+	@OneToOne
+	@JoinColumn(name = "employer_id")
+	private Employer employer;
 
-	    @Column(name = "create_date")
-	    private Date createDate;
+	   @Column(name = "confirm")
+	   private boolean confirm;
 
-	    @Column(name = "active")
-	    private boolean active;
+	   @Column(name = "create_date")
+	   private Date createDate;
+
+	   @Column(name = "active")
+	   private boolean active;
 	
 
 }
